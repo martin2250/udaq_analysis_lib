@@ -130,7 +130,8 @@ void take_from_length(size_t &length, size_t count = 1) {
 }
 
 // average all cpu triggers, return hits and counts
-template <size_t N_ADC>
+constexpr size_t N_ADC = 3;
+
 auto get_baseline(pybind11::buffer input, uint16_t adc_clip) {
     static_assert(N_ADC >= 2 && N_ADC <= 3,
                   "only 2 and 3 ADCs are supported currently");
@@ -361,7 +362,7 @@ std::tuple<int, int> analyze_hitbuf(pybind11::buffer input) {
 PYBIND11_MODULE(analyze_hitbuffer, m) {
     m.doc() = "pybind11 example plugin";  // optional module docstring
 
-    m.def("get_baseline", &get_baseline<3>, "get_baseline");
+    m.def("get_baseline", &get_baseline, "get_baseline");
 
     m.def("get_hitrate_thresh", &get_hitrate_thresh, "get_hitrate_thresh");
     m.def("analyze_hitbuf", &analyze_hitbuf, "analyze_hitbuf");
