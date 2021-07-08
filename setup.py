@@ -29,7 +29,7 @@ setuptools.setup(
         'udaq_analysis_lib',
     ],
     package_dir={
-        'udaq_analysis_lib': 'lib'
+        'udaq_analysis_lib': 'pylib'
     },
     # Currently, build_ext only provides an optional "highest supported C++
     # level" feature, but in the future it may provide more features.
